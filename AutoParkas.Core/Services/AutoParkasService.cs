@@ -1,5 +1,6 @@
 ﻿using AutoParkas.Core.Contracts;
 using AutoParkas.Core.Models;
+using AutoParkas.Core.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +13,12 @@ namespace AutoParkas.Core.Services
     {
         private Automobilis[] Automobiliai;
         private Klientas[] Klientai;
-
-        public AutoParkasService()
+        private AppDatabaseContext _dbContext;
+        public AutoParkasService(AppDatabaseContext databaseContext)
         {
-            Automobiliai = new Automobilis[0];
-            Klientai = new Klientas[0];
-
+            _dbContext = databaseContext;
+            Automobiliai = _dbContext.Automobiliai.ToArray<Automobilis>();
+            Klientai = _dbContext.Klientai.ToArray<Klientas>();
         }
         public void PridetiAutomobili(Automobilis automobilis)
         {
@@ -30,35 +31,17 @@ namespace AutoParkas.Core.Services
             }
             naujasMasyvas[index] = automobilis;
             Automobiliai = naujasMasyvas;
-
+            _dbContext.Automobiliai.Add(automobilis);
+            _dbContext.SaveChanges();
 
         }
         public Automobilis[] GautiVisusAutomobilius()
         {
-            return Automobiliai;
+            return _dbContext.Automobiliai.ToArray();
         }
         public Automobilis[] GautiAutomobiliusPagalMarke(string marke)
         {
-            Automobilis[] automobiliai;
-
-            int kiekis = 0;
-            foreach (Automobilis a in Automobiliai)
-            {
-                if (a.Marke == marke)
-                    kiekis++;
-            }
-            automobiliai = new Automobilis[kiekis];
-            int index = 0;
-            foreach (Automobilis a in Automobiliai)
-            {
-                if (a.Marke == marke)
-                {
-                    automobiliai[index] = a;
-                    index++;
-                }
-            }
-
-            return automobiliai;
+            return _dbContext.Automobiliai.Where(x => x.Marke == marke).ToArray();
         }
         public Automobilis GautiAutomobiliPagalMakreModeli(string marke, string modelis)
         {
@@ -111,7 +94,8 @@ namespace AutoParkas.Core.Services
             }
             naujasMasyvas[index] = naujasKlientas;
             Klientai = naujasMasyvas;
-
+            _dbContext.Klientai.Add(naujasKlientas);
+            _dbContext.SaveChanges();
         }
         public Klientas[] GautiVisusKlientus()
         {

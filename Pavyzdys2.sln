@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34616.47
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pavyzdys2", "Pavyzdys2\Pavyzdys2.csproj", "{96E7206A-4B7F-45E0-9524-6A13C3C5D877}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pavyzdys2", "Pavyzdys2\Pavyzdys2.csproj", "{96E7206A-4B7F-45E0-9524-6A13C3C5D877}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoParkas.Core", "AutoParkas.Core\AutoParkas.Core.csproj", "{8E3CAE47-C980-4C50-9C36-F983B7AA4664}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoParkas.Core", "AutoParkas.Core\AutoParkas.Core.csproj", "{8E3CAE47-C980-4C50-9C36-F983B7AA4664}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoParkas.ConsoleApp", "AutoParkas.ConsoleApp\AutoParkas.ConsoleApp.csproj", "{AEFB9D8C-DCBB-4B15-B106-EB34D28C6B74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoParkas.ConsoleApp", "AutoParkas.ConsoleApp\AutoParkas.ConsoleApp.csproj", "{AEFB9D8C-DCBB-4B15-B106-EB34D28C6B74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoParkas.Tests", "AutoParkas.Tests\AutoParkas.Tests.csproj", "{86ABC105-757C-4510-9DE3-262474EE9A46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoParkas.Tests", "AutoParkas.Tests\AutoParkas.Tests.csproj", "{86ABC105-757C-4510-9DE3-262474EE9A46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
