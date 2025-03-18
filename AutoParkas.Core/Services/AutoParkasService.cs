@@ -1,6 +1,8 @@
 ﻿using AutoParkas.Core.Contracts;
 using AutoParkas.Core.Models;
 using AutoParkas.Core.Utils;
+using Microsoft.Identity.Client;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +21,7 @@ namespace AutoParkas.Core.Services
             _dbContext = databaseContext;
             Automobiliai = _dbContext.Automobiliai.ToArray<Automobilis>();
             Klientai = _dbContext.Klientai.ToArray<Klientas>();
+
         }
         public void PridetiAutomobili(Automobilis automobilis)
         {
@@ -131,5 +134,43 @@ namespace AutoParkas.Core.Services
             }
             return klientaiSuAktyviaNuoma;
         }
+        public Klientas GautiKlientaPagalId(int id)
+        {
+            //Su ciklu
+            foreach(Klientas k in _dbContext.Klientai)
+            {
+                if (k.KlientoId == id)
+                    return k;
+            }
+
+            //Su lambda expression
+            return _dbContext.Klientai.Where(x => x.KlientoId == id).FirstOrDefault();
+        }
+        public List<Klientas> GautiKlientusPagalVardaPavarde(string vardasPavarde)
+        {
+            //Su ciklu
+            List<Klientas> rastiKlientai = new List<Klientas>();
+            foreach (Klientas k in _dbContext.Klientai)
+            {
+                if (k.VardasPavarde == vardasPavarde)
+                    rastiKlientai.Add(k);
+            }
+            return rastiKlientai;
+
+            //Su Lamba expression
+            return _dbContext.Klientai.Where(x => x.VardasPavarde == vardasPavarde).ToList();
+        }
+
+        public bool IstrintiKlientaPagalId(int id)
+        {
+            Klientas klientasIstrinti = GautiKlientaPagalId(id);
+            if (klientasIstrinti == null)
+                return false;
+
+            _dbContext.Klientai.Remove(klientasIstrinti);
+            _dbContext.SaveChanges();
+            return true;
+        }
+        
     }
 }

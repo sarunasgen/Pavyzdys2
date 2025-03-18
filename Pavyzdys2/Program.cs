@@ -2,6 +2,7 @@ using AutoParkas.Core.Contracts;
 using AutoParkas.Core.Services;
 using AutoParkas.Core.Utils;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 string sqlConnection = "Server=localhost\\MSSQLSERVER01;Database=automobiliai_ef;Trusted_Connection=True;TrustServerCertificate=true;";
@@ -12,8 +13,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IAutoNuoma, AutoParkasService>();
-var app = builder.Build();
 
+
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
+var app = builder.Build();
+//GeneralInformationService generalInformationService = new GeneralInformationService(app.Services.GetService<AppDatabaseContext>());
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -27,4 +35,5 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+Log.Information("API paleistas sekmingai");
 app.Run();

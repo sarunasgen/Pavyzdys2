@@ -18,5 +18,8 @@ namespace AutoParkas.Core.Contracts
         Klientas[] GautiVisusKlientus();
         Klientas GautiKlientaPagalAsmensKoda(long ak);
         Klientas[] GautiKlientusSuAktyviomisNuomomis();
+        List<Klientas> GautiKlientusPagalVardaPavarde(string vardasPavarde);
+        Klientas GautiKlientaPagalId(int id);
+        bool IstrintiKlientaPagalId(int id);
     }
 }

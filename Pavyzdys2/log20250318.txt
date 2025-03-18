@@ -1,0 +1,12 @@
+2025-03-18 09:40:22.217 +02:00 [INF] API paleistas sekmingai
+2025-03-18 09:42:24.099 +02:00 [INF] API paleistas sekmingai
+2025-03-18 09:42:34.108 +02:00 [WRN] Klientas buvo nerastas su id: 18
+2025-03-18 09:45:09.125 +02:00 [INF] API paleistas sekmingai
+2025-03-18 09:45:16.465 +02:00 [WRN] Klientas buvo nerastas su id: 55
+2025-03-18 09:47:58.239 +02:00 [INF] API paleistas sekmingai
+2025-03-18 09:50:11.981 +02:00 [INF] API paleistas sekmingai
+2025-03-18 09:51:19.627 +02:00 [INF] API paleistas sekmingai
+2025-03-18 09:51:47.642 +02:00 [INF] API paleistas sekmingai
+2025-03-18 09:55:00.282 +02:00 [INF] API paleistas sekmingai
+2025-03-18 09:56:48.644 +02:00 [INF] API paleistas sekmingai
+2025-03-18 09:56:59.001 +02:00 [ERR] Ivyko klaida Object reference not set to an instance of an object.
